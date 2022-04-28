@@ -1,1 +1,1 @@
-Presenting... a simple chord ear training app built using Tone.js
+Presenting... a simple chord ear training app built using React and Tone.js
