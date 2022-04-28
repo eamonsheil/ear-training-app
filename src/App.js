@@ -30,11 +30,8 @@ function App() {
   }
 
   const chordsKeys = Object.keys(chords)
-  // console.log(chordsKeys)
-  // const now = Tone.now()
 
   console.log(Tone.context.state)
-
 
   function playSound() {
     const chordQuality = chordsKeys[Math.floor(Math.random() * chordsKeys.length)]
@@ -67,36 +64,33 @@ function App() {
   return (
     <div className="pageContainer">
       
-        <div className='scoreBoard'>
-          <h3>Score: {scoreboard.score} out of {scoreboard.totalQs}</h3>
-        </div>
-        
-        
-        
-        <div className='playButtons'>
-          <button className="the-one-button" onClick={playSound}>play me</button>
-        </div> 
+      <div className='scoreBoard'>
+        <h3>Score: {scoreboard.score} out of {scoreboard.totalQs}</h3>
+      </div>
+            
+      <div className='playButtons'>
+        <button className="the-one-button" onClick={playSound}>play me</button>
+      </div> 
 
-        <div className='answerOptions'>
-            <h2>What chord just played??</h2>
-            <div className='form'>
-              {chordsKeys.map(chord => {
-                const correctedName = chord.split('_')
-                const corrected = correctedName[0][0].toUpperCase() + correctedName[0].substring(1) + " " + (correctedName.length === 2? correctedName[1][0].toUpperCase() + correctedName[1].substring(1) : "")
+      <div className='answerOptions'>
+        <h2>What chord just played??</h2>
+        <div className='form'>
+          {chordsKeys.map(chord => {
+            const correctedName = chord.split('_')
+             const corrected = correctedName[0][0].toUpperCase() + correctedName[0].substring(1) + " " + (correctedName.length === 2? correctedName[1][0].toUpperCase() + correctedName[1].substring(1) : "")
                 
-                return <button className='button' 
+              return <button className='button' 
                   key={chord}  
                   value={chord} name={chord} 
-                  onClick={chordSelection}>{corrected}</button>}
-                  )}
-            </div>
+                  onClick={chordSelection}>{corrected}</button>
+            })
+          }
           </div>
-          <div className='playAgainButton'>
-          <button className='button' onClick={playSoundAgain}>One more time pls</button>
-          </div>
-          {/* <div className='questionForm'>  */}
-            
-       
+      </div>
+    
+      <div className='playAgainButton'>
+        <button className='button' onClick={playSoundAgain}>One more time pls</button>
+      </div>
     </div>
   );
 }
